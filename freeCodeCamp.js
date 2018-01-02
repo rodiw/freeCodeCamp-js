@@ -128,3 +128,19 @@ function mutation(arr) {
 	return true;
 }
 mutation(["hello", "hEy"]);
+
+// Falsy Bouncer
+function bouncer(arr) {
+	return arr.filter(val => Boolean(val));
+}
+bouncer([false, null, 0, NaN, undefined, "", null]);
+
+
+// Seek and Destroy
+function destroyer(arr) {
+	let args = [...arguments].splice(1);
+	return arr.filter(val1 => {
+		return args.every(val2 => val1 !== val2)
+	});
+}
+destroyer([1, 2, 3, 1, 2, 3], 2, 3);
