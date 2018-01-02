@@ -66,3 +66,65 @@ function largestOfFour(arr) {
   return newArr;
 }
 largestOfFour([[4, 5, 1, 3], [13, 27, 18, 26], [32, 35, 37, 39], [1000, 1001, 857, 1]]);
+
+
+// Confirm the Ending
+function confirmEnding(str, target) {
+	if (str.substr(str.length - target.length) === target) {
+		return true;
+	} else {
+		return false;
+	}
+}
+confirmEnding("Open sesame", "same");
+
+// Repeat a string repeat a string
+function repeatStringNumTimes(str, num) {
+	let result = "";
+	for (let i = 0; i < num; i++) {
+		result += str;
+	}
+	return result;
+}
+repeatStringNumTimes("abc", 3);
+
+
+// Truncate a string
+function truncateString(str, num) {
+	if (num <= 3)
+		return str.slice(0, num) + "...";
+	else if (num >= str.length)
+		return str;
+	else
+		return str.slice(0, num - 3) + "...";
+}
+truncateString("A-tisket a-tasket A green and yellow basket", 11);
+
+
+// Chunky Monkey
+function chunkArrayInGroups(arr, size) {
+	let newArr = [];
+	while (arr.length > 0)
+		newArr.push(arr.splice(0, size));
+
+	return newArr;
+}
+chunkArrayInGroups(["a", "b", "c", "d"], 2);
+
+
+// Slasher Flick
+function slasher(arr, howMany) {
+	return arr.splice(howMany);
+}
+slasher([1, 2, 3], 2);
+
+// Mutations
+function mutation(arr) {
+	let compare = arr[1].toLowerCase();
+	for (let i = 0; i < compare.length; i++) {
+		if (arr[0].toLowerCase().indexOf(compare[i]) === -1)
+			return false;
+	}
+	return true;
+}
+mutation(["hello", "hEy"]);
