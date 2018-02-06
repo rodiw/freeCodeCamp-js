@@ -144,3 +144,68 @@ function destroyer(arr) {
 	});
 }
 destroyer([1, 2, 3, 1, 2, 3], 2, 3);
+
+// Where do I belong
+function getIndexToIns(arr, value) {
+	let sortedArr = arr.sort((a, b) => a - b)
+	for (let i = 0; i < sortedArr.length; i++) {
+		if (value <= sortedArr[i])
+			return i
+		else if (i == sortedArr.length - 1)
+			return sortedArr.length
+	}
+}
+
+getIndexToIns([40, 60, 53], 50);
+
+
+// Caesars Cipher
+function rot13(str) {
+	let rot13Rule = 13
+	let result = ""
+	let symbolRegex = /[^a-zA-Z]/g
+
+	for (let i = 0; i < str.length; i++) {
+		if (symbolRegex.test(str[i])) {
+			result += str[i]
+		} else {
+			if (65 > (str[i].charCodeAt() - rot13Rule)) {
+				result += String.fromCharCode(91 - (65 - (str[i].charCodeAt() - rot13Rule)))
+			} else {
+				result += String.fromCharCode(str[i].charCodeAt() - rot13Rule)
+			}
+		}
+	}
+	return result;
+}
+
+rot13("LBH QVQ VG!");
+
+// Sum All Numbers in a Range
+function sumAll(arr) {
+	let maxNum = arr.reduce((a, b) => Math.max(a, b))
+	let minNum = arr.reduce((a, b) => Math.min(a, b))
+
+	return createNumberArray(minNum, maxNum).reduce((a, b) => a + b)
+}
+
+function createNumberArray(begning, endning) {
+	let numArr = []
+	for (let i = begning; i <= endning; i++) {
+		numArr.push(i);
+	}
+	return numArr
+}
+
+sumAll([1, 4]);
+
+// Diff Two Arrays
+function diffArray(arr1, arr2) {
+	let newArr = []
+	let firstMatch = arr1.filter(item => arr2.indexOf(item) == -1)
+	let secondMatch = arr2.filter(item => arr1.indexOf(item) == -1)
+
+	return newArr.concat(firstMatch, secondMatch)
+}
+
+diffArray(["andesite", "grass", "dirt", "pink wool", "dead shrub"], ["diorite", "andesite", "grass", "dirt", "dead shrub"]);
