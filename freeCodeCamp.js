@@ -227,5 +227,23 @@ function pairElement(str) {
     }
   })
 }
-result = pairElement("GCGP")
+pairElement("GCGP")
 
+//Missing letters
+function fearNotLetter(letters) {
+  let lettersToArr = Array.from(letters.toLowerCase())
+  let alphabet = "abcdefghijklmnopqrstuvwxyz".split("")
+
+  let shortenAlphabet = alphabet.map((letter, i) => 
+    (letter.charCodeAt(0) >= lettersToArr[0].charCodeAt(0)) && 
+    (letter.charCodeAt(0) <= lettersToArr[lettersToArr.length - 1].charCodeAt(0)) ? letter : false)
+    .filter(remainingLetters => remainingLetters != false)
+
+  for (let i = 0; i < shortenAlphabet.length; i++) {
+    if (shortenAlphabet[i].charCodeAt(0) !== lettersToArr[i].charCodeAt(0)) {
+      return shortenAlphabet[i]
+    }
+  }
+}
+
+fearNotLetter("abd");
