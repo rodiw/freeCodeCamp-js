@@ -232,7 +232,7 @@ pairElement("GCGP")
 //Missing letters
 function fearNotLetter(letters) {
   let lettersToArr = Array.from(letters.toLowerCase())
-  let alphabet = "abcdefghijklmnopqrstuvwxyz".split("")
+  const alphabet = Array.from("abcdefghijklmnopqrstuvwxyz")
 
   let shortenAlphabet = alphabet.map((letter, i) => 
     (letter.charCodeAt(0) >= lettersToArr[0].charCodeAt(0)) && 
@@ -243,7 +243,6 @@ function fearNotLetter(letters) {
     if (shortenAlphabet[i].charCodeAt(0) !== lettersToArr[i].charCodeAt(0)) {
       return shortenAlphabet[i]
     }
-  }
+  }  
 }
-
 fearNotLetter("abd");
