@@ -209,3 +209,23 @@ function diffArray(arr1, arr2) {
 }
 
 diffArray(["andesite", "grass", "dirt", "pink wool", "dead shrub"], ["diorite", "andesite", "grass", "dirt", "dead shrub"]);
+
+//DNA Pairing
+function pairElement(str) {
+  return Array.from(str).map(e => {
+    switch (e) {
+      case 'A':
+        return ['A', 'T']
+      case 'T':
+        return ['T', 'A']
+      case 'G':
+        return ['G', 'C']
+      case 'C':
+        return ['C', 'G']
+      default:
+        return ["undefined DNA Type"]
+    }
+  })
+}
+result = pairElement("GCGP")
+
