@@ -209,3 +209,40 @@ function diffArray(arr1, arr2) {
 }
 
 diffArray(["andesite", "grass", "dirt", "pink wool", "dead shrub"], ["diorite", "andesite", "grass", "dirt", "dead shrub"]);
+
+//DNA Pairing
+function pairElement(str) {
+  return Array.from(str).map(e => {
+    switch (e) {
+      case 'A':
+        return ['A', 'T']
+      case 'T':
+        return ['T', 'A']
+      case 'G':
+        return ['G', 'C']
+      case 'C':
+        return ['C', 'G']
+      default:
+        return ["undefined DNA Type"]
+    }
+  })
+}
+pairElement("GCGP")
+
+//Missing letters
+function fearNotLetter(letters) {
+  let lettersToArr = Array.from(letters.toLowerCase())
+  const alphabet = Array.from("abcdefghijklmnopqrstuvwxyz")
+
+  let shortenAlphabet = alphabet.map((letter, i) => 
+    (letter.charCodeAt(0) >= lettersToArr[0].charCodeAt(0)) && 
+    (letter.charCodeAt(0) <= lettersToArr[lettersToArr.length - 1].charCodeAt(0)) ? letter : false)
+    .filter(remainingLetters => remainingLetters != false)
+
+  for (let i = 0; i < shortenAlphabet.length; i++) {
+    if (shortenAlphabet[i].charCodeAt(0) !== lettersToArr[i].charCodeAt(0)) {
+      return shortenAlphabet[i]
+    }
+  }  
+}
+fearNotLetter("abd");
