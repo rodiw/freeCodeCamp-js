@@ -314,7 +314,7 @@ fearNotLetter("abd");
 
 //Boo Who
 function booWho(bool) {
-	return bool === true || bool === false ? true : false
+	return typeof bool === "boolean"
 }
 
 let booWhooResult = booWho()
