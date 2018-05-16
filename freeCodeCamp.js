@@ -210,6 +210,71 @@ function diffArray(arr1, arr2) {
 
 diffArray(["andesite", "grass", "dirt", "pink wool", "dead shrub"], ["diorite", "andesite", "grass", "dirt", "dead shrub"]);
 
+// Roman Numeral Converter
+function convertToRoman(num) {
+	let roman = ""
+	let romanNumeral = ["M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"]
+	let numeral = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1]
+	for (let i = 0; i < numeral.length; i++) {
+		while (num >= numeral[i]) {
+			roman += romanNumeral[i]
+			num -= numeral[i]
+		}
+	}
+	return roman
+}
+
+convertToRoman(36);
+
+// Wherefore art thou
+function whatIsInAName(collection, source) {
+	let keys = Object.keys(source)
+
+	return collection.filter((obj) => {
+		for (let key of keys) {
+			if (!obj.hasOwnProperty(key) || obj[key] !== source[key]) {
+				return false
+			}
+		}
+		return true
+	})
+}
+
+whatIsInAName([{
+	"a": 1,
+	"b": 2
+}, {
+	"a": 1
+}, {
+	"a": 1,
+	"b": 2,
+	"c": 2
+}], {
+	"a": 1,
+	"b": 2
+})
+
+// Search and replace
+function myReplace(str, before, after) {
+	let stringArray = str.split(" ")
+
+	return stringArray
+		.map((currentItem) => {
+			if (currentItem.toLowerCase() == before.toLowerCase()) {
+				return seeIfCapitalLetter(currentItem) ? after[0].toUpperCase() + after.slice(1) : after
+			} else {
+				return currentItem
+			}
+		})
+		.join(" ")
+}
+
+function seeIfCapitalLetter(str) {
+	return str[0] == str[0].toUpperCase() ? true : false
+}
+
+myReplace("He is Sleeping on the couch", "Sleeping", "sitting")
+
 //DNA Pairing
 function pairElement(str) {
   return Array.from(str).map(e => {
