@@ -316,6 +316,17 @@ fearNotLetter("abd");
 function booWho(bool) {
 	return typeof bool === "boolean"
 }
-
 let booWhooResult = booWho()
 booWhooResult
+
+//Sorted Union
+function uniteUnique(arr) {
+  let resultArr = []
+  
+  for (let i = 0; i < arguments.length; i++) {
+    arguments[i].forEach(num => resultArr.push(num))
+  }
+	
+  return resultArr.filter((uniqueNum, index, self) => self.indexOf(uniqueNum) === index)
+}
+uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1])
