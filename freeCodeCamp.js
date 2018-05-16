@@ -311,3 +311,11 @@ function fearNotLetter(letters) {
   }  
 }
 fearNotLetter("abd");
+
+//Boo Who
+function booWho(bool) {
+	return bool === true || bool === false ? true : false
+}
+
+let booWhooResult = booWho()
+booWhooResult
