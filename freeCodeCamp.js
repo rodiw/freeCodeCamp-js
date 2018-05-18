@@ -330,3 +330,28 @@ function uniteUnique(arr) {
   return resultArr.filter((uniqueNum, index, self) => self.indexOf(uniqueNum) === index)
 }
 uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1])
+
+//Convert HTML Entities
+function convertHTML(str) {
+  return str
+    .split("")
+    .map(characters => {
+      switch (characters) {
+        case '&':
+          return "&amp;"
+        case '<':
+          return "&lt;"
+        case '>':
+          return "&gt;"
+        case '\"':
+          return "&quot;"  
+        case '\'':
+          return "&apos;"
+        default:
+          return characters
+      }
+  })
+  .join("")
+}
+
+let convertResult = convertHTML("Dolce & Gabbana")
