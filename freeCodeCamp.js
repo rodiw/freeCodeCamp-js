@@ -362,23 +362,13 @@ function spinalCase(str) {
 
   return str
     .split("")
-    .map(char => char.match(regExpNonLetters) ? char.replace(regExpNonLetters, " ") : char)
-    .map(char => char.match(regExpCapsLetters) ? char.replace(regExpCapsLetters, " " + char) : char)
-    .map(char => char == " " ? "-" : char)
-    
-/*     .map((characters, index, self) => {
-      if (characters === characters.toUpperCase() &&
-        index !== 0 &&
-        self[index - 1] !== '-')
-        return "-" + characters.toLowerCase()
-      else if (self[index - 1] === '-') 
-        return characters.toLowerCase()
-      else if (characters == characters.toUpperCase() && index !== 0)
-        return characters.replace(characters, characters.toLowerCase())
-      else
-        return characters.replace(characters, characters.toLowerCase())
-      }
-    ) */
+    .map(char1 => char1.match(regExpNonLetters) ? char1.replace(regExpNonLetters, " ") : char1)
+    .map((char2, index) => char2.match(regExpCapsLetters) && index !== 0 ? "-" + char2.toLowerCase() : char2.toLowerCase())
+    .map(char3 => char3 === " " ? "-" : char3)
+    .join("")
+    .split("")
+    .map((char4, index, self) => char4 === "-" && self[index - 1] === "-" ? "" : char4)
     .join("")
 }
-spinalCase('AllThe-small Things');
+
+let spinalCaseResult = spinalCase("Teletubbies say Eh-oh")
