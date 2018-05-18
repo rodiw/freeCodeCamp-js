@@ -362,13 +362,15 @@ function spinalCase(str) {
 
   return str
     .split("")
-    .map(char1 => char1.match(regExpNonLetters) ? char1.replace(regExpNonLetters, " ") : char1)
-    .map((char2, index) => char2.match(regExpCapsLetters) && index !== 0 ? "-" + char2.toLowerCase() : char2.toLowerCase())
-    .map(char3 => char3 === " " ? "-" : char3)
+		.map(symbolChars => 
+			symbolChars.match(regExpNonLetters) ? symbolChars.replace(regExpNonLetters, " ") : symbolChars)
+    .map((upperCaseChars, index) => upperCaseChars.match(regExpCapsLetters) && index !== 0 ? "-" + upperCaseChars.toLowerCase() : upperCaseChars.toLowerCase())
+    .map(spaceChars => spaceChars === " " ? "-" : spaceChars)
     .join("")
     .split("")
-    .map((char4, index, self) => char4 === "-" && self[index - 1] === "-" ? "" : char4)
+    .map((dashChars, index, self) => dashChars === "-" && self[index - 1] === "-" ? "" : dashChars)
     .join("")
 }
 
 let spinalCaseResult = spinalCase("Teletubbies say Eh-oh")
+spinalCaseResult
