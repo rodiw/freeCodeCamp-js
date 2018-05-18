@@ -355,3 +355,30 @@ function convertHTML(str) {
 }
 
 let convertResult = convertHTML("Dolce & Gabbana")
+
+function spinalCase(str) {
+  let regExpNonLetters = /^[^A-Za-z]*$/
+  let regExpCapsLetters = /^[A-Z]/
+
+  return str
+    .split("")
+    .map(char => char.match(regExpNonLetters) ? char.replace(regExpNonLetters, " ") : char)
+    .map(char => char.match(regExpCapsLetters) ? char.replace(regExpCapsLetters, " " + char) : char)
+    .map(char => char == " " ? "-" : char)
+    
+/*     .map((characters, index, self) => {
+      if (characters === characters.toUpperCase() &&
+        index !== 0 &&
+        self[index - 1] !== '-')
+        return "-" + characters.toLowerCase()
+      else if (self[index - 1] === '-') 
+        return characters.toLowerCase()
+      else if (characters == characters.toUpperCase() && index !== 0)
+        return characters.replace(characters, characters.toLowerCase())
+      else
+        return characters.replace(characters, characters.toLowerCase())
+      }
+    ) */
+    .join("")
+}
+spinalCase('AllThe-small Things');
