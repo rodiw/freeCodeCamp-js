@@ -374,3 +374,22 @@ function spinalCase(str) {
 
 let spinalCaseResult = spinalCase("Teletubbies say Eh-oh")
 spinalCaseResult
+
+
+//Sum All Odd Fibonacci Numbers
+function createOddFibonacciArray(num) {
+  let arr = [0, 1]
+  for (let i = 2; i <= num; i++) {
+    arr.push(arr[i-2] + arr[i-1])
+  }
+  return arr
+          .filter(numsUnderNum => numsUnderNum <= num)
+          .filter(oddNums => oddNums % 2 != 0)
+}
+
+function sumFibs(num) {
+  return num <= 1 ? num : createOddFibonacciArray(num).reduce((prevVal, currVal) => prevVal + currVal)
+}
+
+
+let numArr = sumFibs(75025)
