@@ -393,3 +393,30 @@ function sumFibs(num) {
 
 
 let numArr = sumFibs(75025)
+
+// Sum All Primes
+function creatPrimNumberArray(num) {
+  let arr = []
+  let count = 0
+  for (let i = 2; i <= num; i++) {
+    for (let j = 0; j <= i; j++) {
+      if (i%j === 0) {
+        count++
+      }
+    }
+    if(i==1) {
+      arr.push(i)
+    }
+    if(count == 2) {
+      arr.push(i)
+    }
+    count = 0
+  }
+  return arr
+}
+
+function sumPrimes(num) {
+  return creatPrimNumberArray(num).reduce((prevVal, currVal) => prevVal + currVal);
+}
+
+let primesResult = sumPrimes(23)
