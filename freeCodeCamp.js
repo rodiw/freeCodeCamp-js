@@ -397,20 +397,17 @@ let numArr = sumFibs(75025)
 // Sum All Primes
 function creatPrimNumberArray(num) {
   let arr = []
-  let count = 0
-  for (let i = 2; i <= num; i++) {
-    for (let j = 0; j <= i; j++) {
-      if (i%j === 0) {
-        count++
+  let timesNumCanBeDivided = 0
+  for (let currentNum = 2; currentNum <= num; currentNum++) {
+    for (let dividNums = 1; dividNums <= currentNum; dividNums++) {
+      if (currentNum % dividNums === 0) {
+        timesNumCanBeDivided++
       }
     }
-    if(i==1) {
-      arr.push(i)
+    if (timesNumCanBeDivided == 2) {
+      arr.push(currentNum)
     }
-    if(count == 2) {
-      arr.push(i)
-    }
-    count = 0
+    timesNumCanBeDivided = 0
   }
   return arr
 }
