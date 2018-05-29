@@ -417,3 +417,26 @@ function sumPrimes(num) {
 }
 
 let primesResult = sumPrimes(23)
+
+function createNumSequenceArr(arr) {
+	let newArr = []
+	if (arr[0] > arr[arr.length - 1]) {
+		for (let i = arr[arr.length - 1]; i <= arr[0]; i++) {
+			newArr.push(i)
+		}
+	}
+	else {
+		for (let i = arr[0]; i <= arr[arr.length - 1]; i++) {
+			newArr.push(i)
+		}
+	}
+	return newArr
+}
+
+function smallestCommons(arr) {
+	return createNumSequenceArr(arr)
+}
+
+
+let smallestCommonResult = smallestCommons([1, 5]);
+smallestCommonResult
