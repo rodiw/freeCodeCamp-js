@@ -419,17 +419,13 @@ function sumPrimes(num) {
 let primesResult = sumPrimes(23)
 
 function createNumSequenceArr(arr) {
+	let lowestNum = arr.reduce((a, b) => Math.min(a, b))
+	let highestNum = arr.reduce((a, b) => Math.max(a, b))
 	let newArr = []
-	if (arr[0] > arr[arr.length - 1]) {
-		for (let i = arr[arr.length - 1]; i <= arr[0]; i++) {
-			newArr.push(i)
-		}
+	for (let i = lowestNum; i <= highestNum; i++) {
+		newArr.push(i)
 	}
-	else {
-		for (let i = arr[0]; i <= arr[arr.length - 1]; i++) {
-			newArr.push(i)
-		}
-	}
+	
 	return newArr
 }
 
